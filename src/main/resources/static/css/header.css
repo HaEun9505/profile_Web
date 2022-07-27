@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+body{
+	margin:0;
+	padding:0;	
+}
+
+td.header_menu{
+	font-size: 16px;
+	color: #ffffff;
+	font-family: Arial;
+	text-align: center;
+	padding:10px;
+}
+a:link{
+	text-decoration: none;
+	color: #ffffff;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #ffffff;
+}
+a:hover {
+	text-decoration: underline;
+	color:#a6a6a6;
+}

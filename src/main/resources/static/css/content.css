@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+span.content_text{
+	font-size: 20px;
+	color: #404040;
+	font-family: malgun;
+	font-weight: bold;
+}
+
+input.input_box{
+	border:1px solid #191970;
+	background-color: #ffffff;
+	width: 200px;
+	padding: 5px;
+	font-family: Arial;
+	font-size: 18px;
+	color:#000000;
+}
+textarea.questiontext {
+	border:1px solid #191970;
+	background-color: #ffffff;
+	width: 200px;
+	padding: 5px;
+	font-family: Arial;
+	font-size: 18px;
+	color:#000000;	
+}
+input.button{
+	border:2px solid #ffffff;
+	background-color: #d9b3ff;
+	width: 170px;
+	padding: 5px;
+	font-family: Arial;
+	font-size: 18px;
+	color:#000000;
+}
+input.button:hover {
+	background-color: #7300e6; 
+}

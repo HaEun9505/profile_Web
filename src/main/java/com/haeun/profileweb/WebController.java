@@ -40,4 +40,9 @@ public class WebController {
 	public String join() {
 		return "join";
 	}
+	
+	@RequestMapping(value = "/list")
+	public String list() {
+		return "list";
+	}
 }

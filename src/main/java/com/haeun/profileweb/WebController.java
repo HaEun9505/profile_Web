@@ -1,6 +1,7 @@
 package com.haeun.profileweb;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.haeun.profileweb.dao.IDao;
+import com.haeun.profileweb.dto.MemberDto;
 
 @Controller
 public class WebController {
@@ -75,7 +77,7 @@ public class WebController {
 		if(checkId==0) {
 			dao.joinDao(mid, mpw, mname, memail);
 			
-			//model 객체에 실어서 전달(joinOk-${}에 값을 전달)
+			//데이터를 model 객체에 실어서 전달(joinOk-${}에 값을 전달)
 			model.addAttribute("mname", mname);
 			model.addAttribute("mid", mid);
 		}
@@ -83,4 +85,39 @@ public class WebController {
 		
 		return "joinOk";
 	}
+	
+	@RequestMapping(value = "/loginOk", method = RequestMethod.POST)
+	public String loginOk(HttpServletRequest request, Model model) {
+		
+		String mid = request.getParameter("mid");
+		String mpw = request.getParameter("mpw");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		int checkId = dao.checkIdDao(mid);	//1이 반환되면 아이디가 존재
+		
+		int checkIdPw = dao.checkIdPwDao(mid, mpw);	//아이디와 비밀번호가 모두 일치하면 1 반환
+		
+		//데이터를 model 객체에 실어서 전달
+		model.addAttribute("checkId",checkId);
+		model.addAttribute("checkIdPw",checkIdPw);
+		
+		if(checkIdPw == 1) {	//checkId값이 1인 경우에만 로그인
+			
+			//로그인한 id의 모든 정보를 dto로 반환
+			MemberDto memberDto = dao.memberInfoDao(mid);
+			
+			//비밀번호 체크
+			HttpSession session = request.getSession();
+			
+			//세션에 저장(세션 생성)
+			session.setAttribute("sid", memberDto.getMid());
+			session.setAttribute("sname", memberDto.getMname());
+			
+			model.addAttribute("mid",memberDto.getMid());
+			model.addAttribute("mname",memberDto.getMname());
+		}
+		return "loginOk";
+	}
+	
 }

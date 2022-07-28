@@ -29,7 +29,7 @@
 				<tr height="534">
 					<td bgcolor="#f5d6eb" align="center">
 						<span class="content_text">
-							님 안녕하세요. 반갑습니다<br>
+							${ }님 안녕하세요. 반갑습니다<br>
 							아이디 ${ }로 로그인 성공하셨습니다.<br>
 						</span>
 					</td>

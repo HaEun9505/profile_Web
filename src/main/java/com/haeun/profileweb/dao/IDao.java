@@ -1,5 +1,8 @@
 package com.haeun.profileweb.dao;
 
+import java.util.ArrayList;
+
+import com.haeun.profileweb.dto.BoardDto;
 import com.haeun.profileweb.dto.MemberDto;
 
 public interface IDao {
@@ -11,9 +14,11 @@ public interface IDao {
 	public int checkIdDao(String mid);	//회원가입 여부 체크 메소드(아이디가 존재하면 1, 아니면 0 반환)
 	public int checkIdPwDao(String mid, String mpw);	//아이디와 비밀번호 일치여부 체크(일치하면 1, 아니면 0)
 	public MemberDto memberInfoDao(String mid);	//id로 검색해서 해당 id의 모든 정보를 반환하는 메소드
-	//Parameter에 값 넣을 순서대로 지정
+	//Parameter에 넣을 값 순서대로 지정
 	public void infoModifyDao(String mpw, String mname, String memail, String mid);	//회원정보 수정 메소드
 	
-	
 	//board 관련 dao 메소드
+	public void writeDao(String qid, String qname, String qcontent, String qemail);	//게시판 글쓰기
+	public ArrayList<BoardDto> listDao();	//게시판 글목록 가져오기
+	
 }

@@ -28,4 +28,13 @@
 	<update id="infoModifyDao">
 		UPDATE web_member SET mpw=#{param1}, mname=#{param2}, memail=#{param3} WHERE mid=#{param4} 
 	</update>
+	
+	<insert id="writeDao">
+		INSERT INTO web_board (qnum, qid, qname, qcontent , qemail) VALUES (web_board_seq.nextval, #{param1}, #{param2}, #{param3}, #{param4})
+	</insert>
+	
+	<!-- ArrayList를 구성하고 있는 Dto(클래스) 명시 -->
+	<select id="listDao" resultType="com.haeun.profileweb.dto.BoardDto">
+		SELECT * FROM web_board ORDER BY qnum DESC
+	</select>
 </mapper>

@@ -9,7 +9,7 @@ import lombok.Setter;
 
 @Data
 @NoArgsConstructor	//인수가 없는 생성자 
-@AllArgsConstructor	//모든 인수가 들어있는 생성자
+@AllArgsConstructor	//인수가 있는 생성자
 
 public class MemberDto {
 	

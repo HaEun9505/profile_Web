@@ -30,23 +30,25 @@
 					<td bgcolor="#f5d6eb" align="center">
 						<table border="0" cellspacing="0" cellpadding="10">
 							<form action="write" method="post">
+								<% %>
+							
 								<tr>
 									<td><span class="content_text">MEMBER ID : </span></td>
-									<td><input class="input_box" type="text" name="qid"></td>
+									<td><input class="input_box" type="text" name="qid" value="${memberDto.mid }" readonly></td>
 								</tr>
 								<tr>
 									<td><span class="content_text">NAME : </span></td>
-									<td><input class="input_box" type="text" name="qname"></td>
+									<td><input class="input_box" type="text" name="qname" value="${memberDto.mname }"></td>
 								</tr>
 								<tr>
 									<td valign="top"><span class="content_text">QUESTION : </span></td>
 									<td>
-										<textarea class="questiontext" rows="5" cols="25"></textarea>
+										<textarea class="questiontext" rows="5" cols="25" name="qcontent"></textarea>
 									</td>
 								</tr>
 								<tr>
 									<td><span class="content_text">EMAIL : </span></td>
-									<td><input class="input_box" type="eamil" name="qemail"></td>
+									<td><input class="input_box" type="eamil" name="qemail" value="${memberDto.memail }"></td>
 								</tr>
 								<tr>
 									<td colspan="2">

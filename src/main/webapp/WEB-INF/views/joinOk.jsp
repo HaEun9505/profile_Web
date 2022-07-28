@@ -28,10 +28,26 @@
 			<table width="70%" cellspacing="0" border="0" cellpadding="10">
 				<tr height="534">
 					<td bgcolor="#f5d6eb" align="center">
-						<span class="content_text">
-							님 회원가입을 축하드립니다.<br>
-							가입하신 아이디는 ${ } 입니다.<br>
-						</span>
+						<%
+							int checkId = Integer.parseInt(request.getAttribute("checkId").toString());
+							if(checkId == 0) {
+						%>
+							<span class="content_text">
+								${mname }님 회원가입을 축하드립니다.<br>
+								가입하신 아이디는 ${mid } 입니다.<br>
+							</span>
+						<%
+							}else {
+						%>
+						<script type="text/javascript">
+							//경고창 띄우기
+							alert("가입하시려는 아이디는 이미 사용중입니다. 다른 아이디를 입력하세요.");
+							history.go(-1);	//이전페이지로 돌려보냄
+						
+						</script>
+						<%
+							}
+						%>
 					</td>
 				</tr>
 			</table>

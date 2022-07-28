@@ -29,7 +29,7 @@
 				<tr height="534">
 					<td bgcolor="#f5d6eb" align="center">
 						<table border="0" cellspacing="0" cellpadding="10">
-							<form action="joinOk" mehtod="post">
+							<form action="joinOk" method="post">
 								<tr>
 									<td><span class="content_text">MEMBER ID : </span></td>
 									<td><input class="input_box" type="text" name="mid"></td>
@@ -48,7 +48,7 @@
 								</tr>
 								<tr>
 									<td><span class="content_text">EMAIL : </span></td>
-									<td><input class="input_box" type="eamil" name="memail"></td>
+									<td><input class="input_box" type="text" name="memail"></td>
 								</tr>
 								<tr>
 									<td colspan="2">

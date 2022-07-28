@@ -30,27 +30,27 @@
 					<td bgcolor="#f5d6eb" align="center">
 						<table border="0" cellspacing="0" cellpadding="10">
 							<tr>
-								<td colspan="2"><span class="content_text">${ }님의 회원정보를 수정하였습니다.</span></td>
+								<td colspan="2"><span class="content_text">${memberDto.mname }님의 회원정보를 수정하였습니다.</span></td>
 							</tr>
 							<tr>
 								<td><span class="content_text">MEMBER ID : </span></td>
-								<td>${ }</td>
+								<td><span class="info_text">${memberDto.mid }</span></td>
 							</tr>
 							<tr>
 								<td><span class="content_text">PASSWORD : </span></td>
-								<td>${ }</td>
+								<td><span class="info_text">${memberDto.mpw }</span></td>
 							</tr>
 							<tr>
 								<td><span class="content_text">NAME : </span></td>
-								<td>${ }</td>
+								<td><span class="info_text">${memberDto.mname }</span></td>
 							</tr>
 							<tr>
 								<td><span class="content_text">EMAIL : </span></td>
-								<td>${ }</td>
+								<td><span class="info_text">${memberDto.memail }</span></td>
 							</tr>
 							<tr>
 								<td><span class="content_text">JOINDATE : </span></td>
-								<td>${ }</td>
+								<td><span class="info_text">${memberDto.mdate }</span></td>
 							</tr>
 							<tr>
 								<td colspan="2">

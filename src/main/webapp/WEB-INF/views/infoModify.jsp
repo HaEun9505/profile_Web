@@ -32,11 +32,11 @@
 							<form action="infoModifyOk" method="post">
 								<tr>
 									<td><span class="content_text">MEMBER ID : </span></td>
-									<td><input class="input_box" type="text" name="mid" value="${ }" readonly></td>
+									<td><input class="input_box" type="text" name="mid" value="${memberDto.mid }" readonly></td>
 								</tr>
 								<tr>
 									<td><span class="content_text">PASSWORD : </span></td>
-									<td><input class="input_box" type="password" name="mpw"></td>
+									<td><input class="input_box" type="password" name="mpw" value="${memberDto.mpw }"></td>
 								</tr>
 								<tr>
 									<td><span class="content_text">PW CHECK : </span></td>
@@ -44,15 +44,15 @@
 								</tr>
 								<tr>
 									<td><span class="content_text">NAME : </span></td>
-									<td><input class="input_box" type="text" name="mname" value="${ }"></td>
+									<td><input class="input_box" type="text" name="mname" value="${memberDto.mname }"></td>
 								</tr>
 								<tr>
 									<td><span class="content_text">EMAIL : </span></td>
-									<td><input class="input_box" type="eamil" name="memail" value="${ }"></td>
+									<td><input class="input_box" type="eamil" name="memail" value="${memberDto.memail }"></td>
 								</tr>
 								<tr>
 									<td><span class="content_text">JOINDATE : </span></td>
-									<td><input class="input_box" type="text" name="mdate" value="${ }"></td>
+									<td><input class="input_box" type="text" name="mdate" value="${memberDto.mdate }" readonly></td>
 								</tr>
 								<tr>
 									<td colspan="2">

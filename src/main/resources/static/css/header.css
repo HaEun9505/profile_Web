@@ -25,3 +25,8 @@ a:hover {
 	text-decoration: underline;
 	color:#a6a6a6;
 }
+span.login_text{
+	font-size: 14px;
+	color: #0a0468;
+	font-family: malgun;	
+}

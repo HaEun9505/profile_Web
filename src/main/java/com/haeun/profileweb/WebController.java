@@ -62,7 +62,7 @@ public class WebController {
 	@RequestMapping(value = "/joinOk", method = RequestMethod.POST)
 	public String joinOk(HttpServletRequest request, Model model) {
 		
-		//request 객체로 값 빼기
+		//request 객체로 값 빼오기
 		String mid = request.getParameter("mid");
 		String mpw = request.getParameter("mpw");
 		String mname = request.getParameter("mname");
@@ -107,7 +107,7 @@ public class WebController {
 			//로그인한 id의 모든 정보를 dto로 반환
 			MemberDto memberDto = dao.memberInfoDao(mid);
 			
-			//비밀번호 체크
+			//비밀번호 체크(request객체로 session값 빼오기)
 			HttpSession session = request.getSession();
 			
 			//세션에 저장(세션 생성)
@@ -119,5 +119,54 @@ public class WebController {
 		}
 		return "loginOk";
 	}
+	
+	@RequestMapping(value = "/logout")
+	public String logout(HttpSession session) {
+		
+		//세션 무효화
+		session.invalidate();	//세션 삭제->로그아웃		
+		
+		return "login";
+	}
+	
+	@RequestMapping(value = "/infoModify")
+	public String infoModify(HttpServletRequest request, Model model) {
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		//request객체 안에서 session값 가져오기
+		HttpSession session = request.getSession();
+		
+		String sid = (String) session.getAttribute("sid");
+		
+		//로그인한 id의 모든 정보를 dto로 반환
+		MemberDto memberDto = dao.memberInfoDao(sid);
+		
+		model.addAttribute("memberDto", memberDto);
+		
+		return "infoModify";
+	}
+	
+	@RequestMapping(value = "/infoModifyOk")
+	public String infoModifyOk(HttpServletRequest request, Model model) {
+		
+		String mid = request.getParameter("mid");
+		String mpw = request.getParameter("mpw");
+		String mname = request.getParameter("mname");
+		String memail = request.getParameter("memail");
+		
+		//dao 호출하면 sqlSession과 연결됨
+		IDao dao = sqlSession.getMapper(IDao.class);
+				
+		dao.infoModifyDao(mpw, mname, memail, mid);
+		
+		//정보를 수정한 id의 모든 정보를 dto로 반환
+		MemberDto memberDto = dao.memberInfoDao(mid);
+				
+		model.addAttribute("memberDto", memberDto);
+		
+		return "infoModifyOk";
+	}
+	
 	
 }

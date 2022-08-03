@@ -218,4 +218,36 @@ public class WebController {
 		
 		return "redirect:list";	//새로고침(요청이 새로 들어옴)
 	}
+	
+	@RequestMapping(value = "/qview")
+	public String qview(HttpServletRequest request, Model model) {
+		
+		//request 객체로 값 빼오기
+		String qnum = request.getParameter("qnum");
+		
+		//dao 호출하면 sqlSession과 연결됨
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		//정보를 가져와서 메소드로 반환
+		BoardDto boardDto = dao.contentViewDao(qnum);
+		
+		//데이터를 model 객체에 실어서 전달
+		model.addAttribute("contentDto", boardDto);
+		
+		return "qview";
+	}
+	
+	@RequestMapping(value = "/delete")
+	public String delete(HttpServletRequest request, Model model) {
+		
+		//request 객체로 값 빼오기
+		String qnum = request.getParameter("qnum");
+		
+		//dao 호출하면 sqlSession과 연결됨
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		dao.deleteDao(qnum);
+		
+		return "redirect:list";
+	}
 }

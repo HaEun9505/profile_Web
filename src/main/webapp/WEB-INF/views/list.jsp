@@ -44,7 +44,7 @@
 									<td class="board_content">${dto.qnum }</td>
 									<td class="board_content">${dto.qid }</td>
 									<td class="board_content" style="text-align:left;">
-										<a href="#" style="color:#666666;">
+										<a href="qview?qnum=${dto.qnum}" style="color:#666666;">
 										 <c:choose>
                                     <c:when test="${fn:length(dto.qcontent) > 25}">
                                        <c:out value="${fn:substring(dto.qcontent, 0, 25) }"></c:out>...

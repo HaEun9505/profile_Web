@@ -30,8 +30,7 @@
 					<td bgcolor="#f5d6eb" align="center">
 						<table border="0" cellspacing="0" cellpadding="10">
 							<form action="write" method="post">
-								<% %>
-							
+															
 								<tr>
 									<td><span class="content_text">MEMBER ID : </span></td>
 									<td><input class="input_box" type="text" name="qid" value="${memberDto.mid }" readonly></td>

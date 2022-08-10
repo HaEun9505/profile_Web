@@ -64,7 +64,9 @@ public class WebController {
 			//로그인한 id의 모든 정보를 dto로 반환
 			MemberDto memberDto = dao.memberInfoDao(sid);
 			
+			//데이터를 model 객체에 실어서 전달
 			model.addAttribute("memberDto",memberDto);
+			model.addAttribute("sid", sid);	//로그인한 아이디값을 넘겨줌
 			
 		}else {
 			model.addAttribute("sid", "GUEST");
@@ -110,6 +112,12 @@ public class WebController {
 		//checkId가 0 일때만 가입(값이 없을때만)
 		if(checkId==0) {
 			dao.joinDao(mid, mpw, mname, memail);
+			
+			//자동로그인
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("sid", mid);
+			session.setAttribute("sname", mname);
 			
 			//데이터를 model 객체에 실어서 전달(joinOk-${}에 값을 전달)
 			model.addAttribute("mname", mname);
@@ -234,6 +242,8 @@ public class WebController {
 		//데이터를 model 객체에 실어서 전달
 		model.addAttribute("contentDto", boardDto);
 		
+		model.addAttribute("boardId", boardDto.getQid());
+		
 		return "qview";
 	}
 	
@@ -247,6 +257,21 @@ public class WebController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		dao.deleteDao(qnum);
+		
+		return "redirect:list";
+	}
+	
+	@RequestMapping(value = "/qModify")
+	public String modify(HttpServletRequest request, Model model) {
+		
+		String qname = request.getParameter("qname");
+		String qcontent = request.getParameter("qcontent");
+		String qemail = request.getParameter("qemail");		
+		String qnum = request.getParameter("qnum");
+	
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		dao.qModifyDao(qname, qcontent, qemail, qnum);
 		
 		return "redirect:list";
 	}

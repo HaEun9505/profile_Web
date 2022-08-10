@@ -22,4 +22,5 @@ public interface IDao {
 	public ArrayList<BoardDto> listDao();	//게시판 글목록 가져오기(전부 가져오기 때문에 변수 필요 X)
 	public BoardDto contentViewDao(String qnum);	//게시판 글 내용 가져오기(글 번호로 검색해서 해당 글번호의 모든 정보를 반환)
 	public void deleteDao(String qnum);	//게시판 글 삭제
+	public void qModifyDao(String qname, String qcontent, String qemail, String qnum);
 }

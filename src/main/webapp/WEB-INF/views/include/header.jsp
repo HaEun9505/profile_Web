@@ -11,10 +11,10 @@
 	<table width="100%" cellspacing="0" border="0" cellpadding="0">
 		<tr height="50" bgcolor="#404040">
 			<td width="30%">&nbsp;</td>
-			<td class="header_menu">
+			<td class="header_menu" width="5%">
 				<a href="index">Home</a>
 			</td>
-			<td class="header_menu">
+			<td class="header_menu" width="5%">
 				<%
 					//session값 가져오기(Controller에서 셋팅한 session 값)
 					String sessionId = (String)session.getAttribute("sid");
@@ -29,7 +29,7 @@
 					}
 				%>
 			</td>
-			<td class="header_menu">
+			<td class="header_menu" width="5%">
 				<%
 					if(sessionId == null) {
 				%>
@@ -42,15 +42,16 @@
 					}
 				%>
 			</td>
-			<td class="header_menu">
+			<td class="header_menu" width="6%">
 				<a href="profile">Profile</a>
 			</td>
-			<td class="header_menu">
+			<td class="header_menu" width="7%">
 				<a href="question">Question</a>
 			</td>
-			<td class="header_menu">
+			<td class="header_menu" width="6%">
 				<a href="contact">Contact</a>
-			</td>			
+			</td>
+			<td width="30%">&nbsp;</td>			
 		</tr>
 		<tr height="40"><!-- 여백 조절 -->
 			<%

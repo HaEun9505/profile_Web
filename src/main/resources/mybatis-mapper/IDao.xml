@@ -50,4 +50,8 @@
 	<delete id="deleteDao">
 		DELETE FROM web_board WHERE qnum = #{param1}
 	</delete>
+	
+	<update id="qModifyDao">
+		UPDATE web_board SET qname= #{param1}, qcontent=#{param2}, qemail=#{param3} WHERE qnum=#{param4}
+	</update>
 </mapper>

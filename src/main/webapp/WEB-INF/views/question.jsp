@@ -5,6 +5,7 @@
 <head>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/titletext.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/content.css">
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/question.js"></script>
 <meta charset="UTF-8">
 <title>Profile Web</title>
 </head>
@@ -29,11 +30,11 @@
 				<tr height="534">
 					<td bgcolor="#f5d6eb" align="center">
 						<table border="0" cellspacing="0" cellpadding="10">
-							<form action="write" method="post">
+							<form action="write" method="post" name="question_form">
 															
 								<tr>
 									<td><span class="content_text">MEMBER ID : </span></td>
-									<td><input class="input_box" type="text" name="qid" value="${memberDto.mid }" readonly></td>
+									<td><input class="input_box" type="text" name="qid" value="${sid }" readonly></td>
 								</tr>
 								<tr>
 									<td><span class="content_text">NAME : </span></td>
@@ -51,7 +52,7 @@
 								</tr>
 								<tr>
 									<td colspan="2">
-										<input class="button" type="submit" value="WRITE">&nbsp;&nbsp;
+										<input class="button" type="button" value="WRITE" onclick="boardCheck()">&nbsp;&nbsp;
 										<input class="button" type="button" value="LIST" onclick="location.href='list'">
 									</td>
 								</tr>

@@ -61,13 +61,9 @@
 		                           String qid = request.getAttribute("boardId").toString();   // Model에서 넘어온 값 빼기
                            
                             		if (sid == null) {
-                       			 %>   
-		                        <script type="text/javascript">
-		                           alert("비회원은 확인할 수 없습니다.")
-		                           history.go(-1);
-		                        </script>
-		                        <%   
-		                           } else if ((sid != null) && (sid.equals(qid)) || (sid.equals("admin")) ) {   // 앞이 참일 경우에만 뒤의 조건을 봄, 아이디가 admin일 경우 모두 다 수정삭제 가능
+                            			sid = "GUEST";
+                            		}
+		                           if ((sid != null) && (sid.equals(qid)) || (sid.equals("admin")) ) {   // 앞이 참일 경우에만 뒤의 조건을 봄, 아이디가 admin일 경우 모두 다 수정삭제 가능
 		                        %>
 		                        <tr>
 		                           <td colspan="2">

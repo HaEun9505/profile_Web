@@ -47,6 +47,11 @@ public class WebController {
 		return "login";
 	}
 	
+	@RequestMapping(value = "/join")
+	public String join() {
+		return "join";
+	}
+	
 	@RequestMapping(value = "/question")
 	public String question(HttpServletRequest request, Model model) {
 		
@@ -74,11 +79,6 @@ public class WebController {
 		}
 		
 		return "question";
-	}
-	
-	@RequestMapping(value = "/join")
-	public String join() {
-		return "join";
 	}
 	
 	@RequestMapping(value = "/list")
@@ -113,7 +113,7 @@ public class WebController {
 		if(checkId==0) {
 			dao.joinDao(mid, mpw, mname, memail);
 			
-			//자동로그인
+			//자동로그인(세션 값 저장)
 			HttpSession session = request.getSession();
 			
 			session.setAttribute("sid", mid);
@@ -152,12 +152,15 @@ public class WebController {
 			//비밀번호 체크(request객체로 session값 빼오기)
 			HttpSession session = request.getSession();
 			
-			//세션에 저장(세션 생성)
-			session.setAttribute("sid", memberDto.getMid());
-			session.setAttribute("sname", memberDto.getMname());
+			String memberId = memberDto.getMid();
+			String memberName = memberDto.getMname();
 			
-			model.addAttribute("mid",memberDto.getMid());
-			model.addAttribute("mname",memberDto.getMname());
+			//세션에 저장(세션 생성)
+			session.setAttribute("sid", memberId);
+			session.setAttribute("sname", memberName);
+			
+			model.addAttribute("mid",memberId);
+			model.addAttribute("mname",memberName);
 		}
 		return "loginOk";
 	}
@@ -242,7 +245,9 @@ public class WebController {
 		//데이터를 model 객체에 실어서 전달
 		model.addAttribute("contentDto", boardDto);
 		
-		model.addAttribute("boardId", boardDto.getQid());
+		String qid = boardDto.getQid();
+		
+		model.addAttribute("boardId", qid);
 		
 		return "qview";
 	}
@@ -265,10 +270,10 @@ public class WebController {
 	public String modify(HttpServletRequest request, Model model) {
 		
 		String qname = request.getParameter("qname");
-		String qcontent = request.getParameter("qcontent");
-		String qemail = request.getParameter("qemail");		
+		String qcontent = request.getParameter("qcontent"); 
+		String qemail = request.getParameter("qemail");
 		String qnum = request.getParameter("qnum");
-	
+		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		dao.qModifyDao(qname, qcontent, qemail, qnum);
